@@ -47,3 +47,15 @@ Talent Lab ორენოვანი სასწავლო სივრც�
 ენა და მუქი/ნათელი რეჟიმი ზედა მარჯვენა კუთხიდან იცვლება. პროგრესი ენის გადართვისას შენარჩუნდება; სხვადასხვა ბრაუზერსა და დომენზე ჩანაწერები ცალკეა. ანგარიში და გეგმები ჩამოტვირთე პერსონალური ასლისთვის. ავტორიზაცია და სერვერი ამ ვერსიას არ აქვს.
 
 კოდი და Talent Lab-ის ავტორული სასწავლო მასალა MIT ლიცენზიით ვრცელდება. გარე რესურსების შინაარსზე მათი მფლობელების პირობები მოქმედებს.
+
+## Central analytics and ratings
+
+`analytics.js` sends anonymous learning events and submitted star ratings to the separate Talent Lab analytics service. GitHub Pages continues hosting only static files. Uploading the frontend ZIP does not deploy the backend; the analytics service must remain available at its configured `ANALYTICS_BASE` URL.
+
+Use **Admin sign-in** in the footer to open the protected dashboard and sign in with the same ChatGPT account that owns Talent Lab. Only the configured owner account can access detailed analytics, comments, exports or public-visibility settings. Visitors do not need an account to study or rate the platform.
+
+The owner can independently publish total visitor count, average stars and rating count, total completed lessons, and the three most popular lessons. All switches start off. Public counts are based on real recorded data; empty metrics are hidden.
+
+Visits are anonymous browser identifiers, not verified unique people. Analytics begins after installing this version; earlier page views cannot be recovered. Previously saved completed lessons may be synchronised and identified as existing progress. Ratings can be updated from the same browser. An optional comment remains owner-only.
+
+The frontend sends only route/module IDs, quiz scores, completed lesson IDs, active-time estimates, language, coarse device type and referrer hostname. Names, emails, local notes, custom-resource contents, candidate details, full URLs and search terms are excluded. Visitors can turn off future activity collection in **Analytics preferences**. Privacy signals supported by the browser disable collection by default. Star rating submission is a separate explicit action.
