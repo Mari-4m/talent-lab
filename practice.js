@@ -1,7 +1,7 @@
 'use strict';
-const PRACTICE_KEY='talentlab.practice.v1';
+const PRACTICE_KEY=window.accountStoragePrefix?window.accountStoragePrefix+'.practice':'talentlab.practice.v1';
 let practiceState={selected:[],notes:{},history:[]};
-try{const p=JSON.parse(localStorage.getItem(PRACTICE_KEY));if(p&&typeof p==='object'){practiceState.selected=Array.isArray(p.selected)?p.selected.filter(id=>interviewQuestions.some(q=>q.id===id)):[];practiceState.notes=p.notes&&typeof p.notes==='object'&&!Array.isArray(p.notes)?p.notes:{};practiceState.history=Array.isArray(p.history)?p.history.filter(r=>r&&typeof r.score==='number').slice(-30):[];}}catch{}
+try{const p=(window.accountInitialData?.practice||JSON.parse(localStorage.getItem(PRACTICE_KEY)));if(p&&typeof p==='object'){practiceState.selected=Array.isArray(p.selected)?p.selected.filter(id=>interviewQuestions.some(q=>q.id===id)):[];practiceState.notes=p.notes&&typeof p.notes==='object'&&!Array.isArray(p.notes)?p.notes:{};practiceState.history=Array.isArray(p.history)?p.history.filter(r=>r&&typeof r.score==='number').slice(-30):[];}}catch{}
 let interviewTab='guide',interviewFilter={competency:'ყველა',type:'ყველა',query:''};
 let testFilter={topic:'ყველა',level:'საბაზისო',count:5},activePractice=null;
 const technicalTopics=[...new Set(glossary.map(t=>t.category))].filter(c=>!['HR საფუძვლები','Recruiting და Sourcing','შეფასება და მეტრიკები','განვითარება და Reward'].includes(c));
